@@ -119,7 +119,7 @@ class DirectoryAdapter(activity: BaseSimpleActivity, var dirs: ArrayList<Directo
             findItem(R.id.cab_unlock).isVisible = selectedPaths.any { config.isFolderProtected(it) }
 
             findItem(R.id.cab_empty_recycle_bin).isVisible = isOneItemSelected && selectedPaths.first() == RECYCLE_BIN
-            findItem(R.id.cab_empty_disable_recycle_bin).isVisible = isOneItemSelected && selectedPaths.first() == RECYCLE_BIN
+//            findItem(R.id.cab_empty_disable_recycle_bin).isVisible = isOneItemSelected && selectedPaths.first() == RECYCLE_BIN
 
             findItem(R.id.cab_create_shortcut).isVisible = isOreoPlus() && isOneItemSelected
 
@@ -142,7 +142,7 @@ class DirectoryAdapter(activity: BaseSimpleActivity, var dirs: ArrayList<Directo
             R.id.cab_unpin -> pinFolders(false)
             R.id.cab_change_order -> changeOrder()
             R.id.cab_empty_recycle_bin -> tryEmptyRecycleBin(true)
-            R.id.cab_empty_disable_recycle_bin -> emptyAndDisableRecycleBin()
+//            R.id.cab_empty_disable_recycle_bin -> emptyAndDisableRecycleBin()
             R.id.cab_hide -> toggleFoldersVisibility(true)
             R.id.cab_unhide -> toggleFoldersVisibility(false)
             R.id.cab_exclude -> tryExcludeFolder()
