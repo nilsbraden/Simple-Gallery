@@ -411,8 +411,10 @@ class MediaActivity : SimpleActivity(), MediaOperationsListener {
         if (currAdapter == null) {
             initZoomListener()
             val fastscroller = if (config.scrollHorizontally) media_horizontal_fastscroller else media_vertical_fastscroller
-            MediaAdapter(this, mMedia.clone() as ArrayList<ThumbnailItem>, this, mIsGetImageIntent || mIsGetVideoIntent || mIsGetAnyIntent,
-                mAllowPickingMultiple, mPath, media_grid, fastscroller) {
+            MediaAdapter(
+                this, mMedia.clone() as ArrayList<ThumbnailItem>, this, mIsGetImageIntent || mIsGetVideoIntent || mIsGetAnyIntent,
+                mAllowPickingMultiple, mPath, media_grid, fastscroller
+            ) {
                 if (it is Medium && !isFinishing) {
                     itemClicked(it.path)
                 }
@@ -609,8 +611,16 @@ class MediaActivity : SimpleActivity(), MediaOperationsListener {
                 val newMedia = it
                 try {
                     gotMedia(newMedia, false)
-                    oldMedia.filter { !newMedia.contains(it) }.mapNotNull { it as? Medium }.filter { !getDoesFilePathExist(it.path) }.forEach {
-                        mediaDB.deleteMediumPath(it.path)
+
+                    // remove cached files that are no longer valid for whatever reason
+                    val newPaths = newMedia.mapNotNull { it as? Medium }.map { it.path }
+                    oldMedia.mapNotNull { it as? Medium }.filter { !newPaths.contains(it.path) }.forEach {
+                        if (mPath == FAVORITES && getDoesFilePathExist(it.path)) {
+                            favoritesDB.deleteFavoritePath(it.path)
+                            mediaDB.updateFavorite(it.path, false)
+                        } else {
+                            mediaDB.deleteMediumPath(it.path)
+                        }
                     }
                 } catch (e: Exception) {
                 }

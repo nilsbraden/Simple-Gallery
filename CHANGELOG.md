@@ -1,6 +1,46 @@
 Changelog
 ==========
 
+Version 6.22.0 *(2021-10-26)*
+----------------------------
+
+ * Added a Contributors section
+ * Fixed a bug with folders not being sorted properly in some cases
+ * Refresh Favorites and Recycle bin with higher priority than the rest
+ * Added 20:9 crop ratio at the image editor
+ * Some other stability, UX and translation improvements
+
+Version 6.21.7 *(2021-10-19)*
+----------------------------
+
+ * Fixed a glitch with videos being corrupt after editing
+ * Some stability and translation improvements
+
+Version 6.21.6 *(2021-10-10)*
+----------------------------
+
+ * Reverting to the previous way of file deletion
+ * Added some stability and translation improvements
+
+Version 6.21.5 *(2021-10-10)*
+----------------------------
+
+ * Reverting to the previous way of file deletion
+ * Added some stability and translation improvements
+
+Version 6.21.4 *(2021-10-09)*
+----------------------------
+
+ * Fixed some file operations on Android 11+
+ * Fixed files not being recognized by some apps after edit/copy
+ * Added some stability, translation and UX improvements
+
+Version 6.21.3 *(2021-10-03)*
+----------------------------
+
+ * Fixed a glitch with edited videos being low quality
+ * Added some UX, translation and stability improvements
+
 Version 6.21.2 *(2021-09-09)*
 ----------------------------
 
